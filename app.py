@@ -21,7 +21,7 @@ def prediction():
         with open("model.pkl", "rb") as model_file:
             mlmodel=pickle.load(model_file)
         res=mlmodel.predict([[float(nitro),float(phos),float(kp),float(temp),float(hum),float(ph),float(rain)]])
-        return jsonify({"Crop Result":str(res[0])})
+        return render_template("result.html",res=res)
     else:
         return render_template('prediction.html')
 
